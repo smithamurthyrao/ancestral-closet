@@ -1,6 +1,6 @@
 import Nav from '@/components/Nav'
 import WaitlistForm from '@/components/WaitlistForm'
-import { getSarees, urlFor } from '@/lib/sanity'
+import { getSarees, urlFor, client } from '@/lib/sanity'
 import Image from 'next/image'
 
 const badgeStyles: Record<string, { bg: string; color: string; border?: string }> = {
@@ -118,7 +118,7 @@ export default async function Shop() {
                         Heirloom
                       </span>
                     )}
-                    {coverImage && (
+                    {coverImage && client && (
                       <Image
                         src={urlFor(coverImage).width(600).height(450).fit('crop').url()}
                         alt={coverImage.alt || saree.name}

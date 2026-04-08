@@ -17,8 +17,7 @@ export const client = projectId
 const builder = projectId && client ? imageUrlBuilder(client) : null
 
 export function urlFor(source: SanityImageSource) {
-  if (!builder) return { url: () => '' }
-  return builder.image(source)
+  return builder!.image(source)
 }
 
 export async function getSarees() {
