@@ -1,6 +1,6 @@
 import Nav from '@/components/Nav'
 import WaitlistForm from '@/components/WaitlistForm'
-import { getSarees, urlFor } from '@/../../sanity/lib/client'
+import { getSarees, urlFor } from '@/lib/sanity'
 import Image from 'next/image'
 
 const badgeStyles: Record<string, { bg: string; color: string; border?: string }> = {
