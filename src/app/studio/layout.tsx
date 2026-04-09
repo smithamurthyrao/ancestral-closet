@@ -1,6 +1,6 @@
-export const metadata = {
-  title: 'Ancestral Closet Studio',
-}
+import { metadata, viewport } from 'next-sanity/studio'
+
+export { metadata, viewport }
 
 export default function StudioLayout({
   children,
