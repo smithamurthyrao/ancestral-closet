@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400&family=Jost:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: #FAF7F2;
+  color: #1a1410;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: 'Jost', sans-serif; cursor: pointer; }
+input { font-family: 'Jost', sans-serif; }
+
+/* ── NAV ── */
+.ac-nav {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 40px;
+  border-bottom: 0.5px solid rgba(201,151,58,0.25);
+  background: #1a1410;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.ac-logo img { height: 56px; width: auto; mix-blend-mode: lighten; }
+.ac-nav-links { display: flex; gap: 24px; list-style: none; }
+.ac-nav-links a { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,230,200,0.6); white-space: nowrap; }
+.ac-nav-links a.active { color: #C9973A; }
+.ac-nav-cta { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; border: 0.5px solid #C9973A; color: #C9973A; padding: 9px 20px; background: transparent; white-space: nowrap; }
+.ac-burger { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; }
+.ac-burger span { display: block; width: 22px; height: 2px; background: #C9973A; transition: all 0.2s; }
+.ac-mobile { display: none; flex-direction: column; background: #1a1410; padding: 20px 24px 28px; gap: 18px; border-bottom: 0.5px solid rgba(201,151,58,0.2); width: 100%; box-sizing: border-box; }
+.ac-mobile.open { display: flex; }
+.ac-mobile a { font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,230,200,0.7); padding: 6px 0; border-bottom: 0.5px solid rgba(201,151,58,0.1); }
+.ac-mobile a.active { color: #C9973A; }
+.ac-mobile-cta { width: 100%; padding: 14px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; border: 0.5px solid #C9973A; color: #C9973A; background: transparent; margin-top: 4px; }
+
+/* ── RESPONSIVE GRIDS ── */
+.grid-3 { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1px; background: rgba(201,151,58,0.15); }
+.grid-2 { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; background: rgba(201,151,58,0.12); }
+.grid-4 { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; background: rgba(201,151,58,0.15); }
+.split { display: grid; grid-template-columns: 1fr 1fr; }
+
+/* ── FOOTER ── */
+.footer-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-social { display: flex; gap: 16px; align-items: center; }
+.footer-bottom { width: 100%; border-top: 0.5px solid rgba(201,151,58,0.1); padding-top: 18px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+/* ═══════════ TABLET ═══════════ */
+@media (max-width: 900px) {
+  .ac-nav { padding: 10px 20px; }
+  .ac-logo img { height: 46px; }
+  .ac-nav-links { display: none !important; }
+  .ac-nav-cta { display: none !important; }
+  .ac-burger { display: flex !important; }
+  .grid-3 { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .grid-4 { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .split { grid-template-columns: 1fr; }
+  .footer-row { flex-direction: column; align-items: flex-start; }
+}
+
+/* ═══════════ MOBILE ═══════════ */
+@media (max-width: 600px) {
+  .ac-nav { padding: 8px 16px; }
+  .ac-logo img { height: 40px; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .footer-links { gap: 12px; }
+  .footer-bottom { flex-direction: column; }
+}
