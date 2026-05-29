@@ -36,11 +36,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={{ background: '#1a1410', width: '100%', boxSizing: 'border-box' }}>
+     <section style={{ background: '#1a1410', width: '100%', boxSizing: 'border-box', overflow: 'hidden' }}>
         <p style={{ fontSize: 'clamp(10px,1.5vw,12px)', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#C9973A', padding: 'clamp(32px,6vw,52px) clamp(16px,5vw,40px) 0', opacity: 0.7 }}>
           Three Ways to Participate
         </p>
-        <div className="grid-3" style={{ marginTop: '20px' }}>
+        <div className="grid-3" style={{ marginTop: '20px', width: '100%', overflow: 'hidden' }}>
           {[
             { glyph: '◈', title: 'Buy', desc: 'Acquire an authenticated heirloom. Each saree is curated, condition-graded, and arrives with its provenance story.' },
             { glyph: '◇', title: 'Rent', desc: 'Wear a masterpiece for your occasion. Return it so another family can make their own memories.' },
