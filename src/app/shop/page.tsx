@@ -1,0 +1,108 @@
+import Nav from '@/components/Nav'
+import WaitlistForm from '@/components/WaitlistForm'
+import { getSarees, urlFor, client } from '@/lib/sanity'
+import Image from 'next/image'
+
+export const revalidate = 60
+
+const badgeStyles: Record<string, { bg: string; color: string; border?: string }> = {
+  buy:  { bg: 'rgba(139,26,26,0.75)', color: '#F5C4C4' },
+  rent: { bg: 'rgba(45,107,60,0.75)',  color: '#C0DD97' },
+  both: { bg: 'rgba(26,20,16,0.75)',   color: '#C9973A', border: '0.5px solid rgba(201,151,58,0.5)' },
+}
+const badgeLabel: Record<string, string> = { buy: 'Buy Only', rent: 'Rent Only', both: 'Buy or Rent' }
+const glyphs = ['◎','◈','◇','◉','◎','◈','◇','◉']
+const placeholders = [
+  { listingType: 'both', name: 'Kanjivaram Silk',  origin: 'Tamil Nadu' },
+  { listingType: 'buy',  name: 'Banarasi Brocade', origin: 'Varanasi' },
+  { listingType: 'rent', name: 'Kanjivaram Silk',  origin: 'Tamil Nadu' },
+  { listingType: 'both', name: 'Paithani Silk',    origin: 'Maharashtra' },
+  { listingType: 'rent', name: 'Chanderi Silk',    origin: 'Madhya Pradesh' },
+  { listingType: 'buy',  name: 'Banarasi Brocade', origin: 'Varanasi' },
+]
+
+export default async function Shop() {
+  let sarees: any[] = []
+  try { sarees = await getSarees() } catch {}
+  const hasSarees = sarees && sarees.length > 0
+
+  return (
+    <>
+      <Nav />
+      <div style={{ background: '#1a1410', padding: 'clamp(28px,6vw,44px) clamp(16px,5vw,40px)', borderBottom: '0.5px solid rgba(201,151,58,0.2)', width: '100%', boxSizing: 'border-box' }}>
+        <h1 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(26px,5vw,42px)', fontWeight: 300, color: '#F5E6C8' }}>
+          The <em style={{ fontStyle: 'italic', color: '#C9973A' }}>Collection</em>
+        </h1>
+        <p style={{ fontSize: '12px', color: 'rgba(245,230,200,0.35)', marginTop: '6px', letterSpacing: '0.06em' }}>
+          {hasSarees ? `${sarees.length} authenticated piece${sarees.length !== 1 ? 's' : ''}` : 'Curated pieces arriving soon'}
+        </p>
+      </div>
+
+      {!hasSarees && (
+        <div style={{ background: 'rgba(201,151,58,0.06)', borderBottom: '0.5px solid rgba(201,151,58,0.15)', padding: 'clamp(16px,3vw,20px) clamp(16px,5vw,40px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap', width: '100%', boxSizing: 'border-box' }}>
+          <p style={{ fontSize: 'clamp(13px,1.8vw,14px)', color: '#6B5C50', lineHeight: 1.7, maxWidth: '600px' }}>
+            <em style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(14px,2vw,16px)', color: '#C9973A', fontStyle: 'italic' }}>Professional photography is underway.</em>{' '}
+            Each piece will be listed with its full provenance story, condition grade, and pricing. Join the waitlist to be notified first.
+          </p>
+          <a href="/#waitlist">
+            <button style={{ background: '#C9973A', color: '#1a1410', border: 'none', fontSize: '12px', letterSpacing: '0.16em', textTransform: 'uppercase', padding: '12px 24px', whiteSpace: 'nowrap' }}>
+              Join Waitlist
+            </button>
+          </a>
+        </div>
+      )}
+
+      <div className="grid-3">
+        {hasSarees ? sarees.map((saree, i) => {
+          const badge = badgeStyles[saree.listingType] || badgeStyles.both
+          const coverImage = saree.images?.[0]
+          return (
+            <div key={saree._id} style={{ background: '#fff' }}>
+              <div style={{ aspectRatio: '4/3', position: 'relative', background: '#EDE0D0', overflow: 'hidden' }}>
+                <span style={{ position: 'absolute', top: '10px', left: '10px', zIndex: 2, fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase', padding: '3px 9px', background: badge.bg, color: badge.color, border: badge.border || 'none' }}>
+                  {badgeLabel[saree.listingType]}
+                </span>
+                {coverImage && client && (
+                  <Image src={urlFor(coverImage).width(600).height(450).fit('crop').url()} alt={coverImage.alt || saree.name} fill style={{ objectFit: 'cover' }} />
+                )}
+              </div>
+              <div style={{ padding: 'clamp(12px,2vw,16px) clamp(12px,2.5vw,18px) clamp(14px,3vw,20px)' }}>
+                <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(15px,2.5vw,18px)', color: '#1a1410', marginBottom: '3px' }}>{saree.name}</div>
+                <div style={{ fontSize: '11px', color: '#8B7355', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '10px' }}>{saree.origin}</div>
+                <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', borderTop: '0.5px solid rgba(201,151,58,0.12)', paddingTop: '10px' }}>
+                  <div>
+                    {saree.buyPrice && <div style={{ fontSize: 'clamp(14px,2vw,16px)', color: '#C9973A', fontFamily: "'Cormorant Garamond',serif" }}>${saree.buyPrice.toLocaleString()}</div>}
+                    {saree.rentPrice && <div style={{ fontSize: '11px', color: '#8B7355', marginTop: '2px' }}>Rent ${saree.rentPrice}/3 days</div>}
+                  </div>
+                  <span style={{ fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#C9973A', borderBottom: '0.5px solid rgba(201,151,58,0.4)', paddingBottom: '1px', cursor: 'pointer' }}>Enquire →</span>
+                </div>
+              </div>
+            </div>
+          )
+        }) : placeholders.map((item, i) => {
+          const badge = badgeStyles[item.listingType]
+          return (
+            <div key={i} style={{ background: '#fff' }}>
+              <div style={{ aspectRatio: '4/3', background: '#EDE0D0', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative', gap: '12px' }}>
+                <span style={{ position: 'absolute', top: '10px', left: '10px', fontSize: '10px', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '3px 9px', background: badge.bg, color: badge.color, border: badge.border || 'none' }}>
+                  {badgeLabel[item.listingType]}
+                </span>
+                <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(28px,4vw,40px)', color: '#8B6914', opacity: 0.15 }}>{glyphs[i]}</span>
+                <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(10px,1.5vw,12px)', fontStyle: 'italic', color: '#8B6914', opacity: 0.6, letterSpacing: '0.1em', textAlign: 'center', padding: '0 12px' }}>Photography coming soon</span>
+              </div>
+              <div style={{ padding: 'clamp(12px,2vw,16px) clamp(12px,2.5vw,18px) clamp(14px,3vw,20px)' }}>
+                <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(15px,2.5vw,18px)', color: '#1a1410', marginBottom: '3px' }}>{item.name}</div>
+                <div style={{ fontSize: '11px', color: '#8B7355', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '12px' }}>{item.origin}</div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '0.5px solid rgba(201,151,58,0.12)', paddingTop: '10px' }}>
+                  <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '14px', color: '#8B7355', fontStyle: 'italic' }}>Pricing on request</span>
+                  <a href="/#waitlist" style={{ fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#C9973A', borderBottom: '0.5px solid rgba(201,151,58,0.4)', paddingBottom: '1px' }}>Notify Me</a>
+                </div>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+      <WaitlistForm />
+    </>
+  )
+}
