@@ -130,7 +130,7 @@ function GalleryModal({ images, name, startIndex, onClose }: { images: any[]; na
       {images.length > 1 && (
         <div style={{ display: 'flex', gap: '8px', marginTop: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
           {images.map((img, i) => (
-            <div key={i} onClick={() => setCurrent(i)}
+  <div key={i} onClick={(e) => { e.stopPropagation(); setCurrent(i); }}
               style={{ width: '60px', height: '60px', position: 'relative', cursor: 'pointer', border: i === current ? '2px solid #C9973A' : '2px solid transparent', opacity: i === current ? 1 : 0.6 }}>
               <Image src={urlFor(img).width(120).height(120).fit('crop').url()} alt={img.alt || name} fill style={{ objectFit: 'cover' }} />
             </div>
