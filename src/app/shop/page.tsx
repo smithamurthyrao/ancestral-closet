@@ -71,7 +71,7 @@ function EnquiryModal({ saree, onClose }: { saree: any; onClose: () => void }) {
               style={{ padding: '11px 14px', border: '0.5px solid rgba(201,151,58,0.3)', background: '#fff', fontSize: '14px', outline: 'none', fontFamily: "'Jost',sans-serif" }} />
             <input required type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Your email"
               style={{ padding: '11px 14px', border: '0.5px solid rgba(201,151,58,0.3)', background: '#fff', fontSize: '14px', outline: 'none', fontFamily: "'Jost',sans-serif" }} />
-            <textarea required value={message} onChange={e => setMessage(e.target.value)} placeholder="Your message — feel free to ask about the saree's history, condition, or arrange a viewing."
+            <textarea required value={message} onChange={e => setMessage(e.target.value)} placeholder="Your message — feel free to ask about the saree's history, condition, or pricing."
               rows={4} style={{ padding: '11px 14px', border: '0.5px solid rgba(201,151,58,0.3)', background: '#fff', fontSize: '14px', outline: 'none', fontFamily: "'Jost',sans-serif", resize: 'vertical' }} />
             {status === 'error' && <p style={{ fontSize: '13px', color: '#8B1A1A' }}>Something went wrong. Please try again.</p>}
             <button type="submit" disabled={status === 'loading'}
