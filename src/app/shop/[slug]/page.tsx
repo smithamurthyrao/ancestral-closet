@@ -136,9 +136,7 @@ export default function SareeDetail() {
           <div>
             {/* Main image */}
             <div style={{ position: 'relative', aspectRatio: '4/3', background: '#EDE0D0', overflow: 'hidden', marginBottom: '8px' }}>
-              <span style={{ position: 'absolute', top: '12px', left: '12px', zIndex: 2, fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase', padding: '4px 10px', background: badge.bg, color: badge.color, border: badge.border || 'none' }}>
-                {badgeLabel[saree.listingType]}
-              </span>
+
               {images[activeImg] && (
                 <Image src={urlFor(images[activeImg]).width(900).height(675).fit('max').url()} alt={images[activeImg].alt || saree.name} fill style={{ objectFit: 'cover' }} />
               )}
@@ -218,7 +216,7 @@ export default function SareeDetail() {
             </button>
 
             <p style={{ fontSize: '12px', color: '#8B7355', lineHeight: 1.7, fontStyle: 'italic' }}>
-              Every piece is personally authenticated by Smitha Murthy. We respond to all enquiries within 48 hours.
+              Every piece is personally authenticated by our founder. We respond to all enquiries within 48 hours.
             </p>
           </div>
         </div>

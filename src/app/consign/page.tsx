@@ -51,7 +51,7 @@ export default function Consign() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1px', background: 'rgba(201,151,58,0.2)' }}>
           {[
             { num: '01', title: 'Reach Out', desc: 'Fill in the form below with details about your piece. We respond to all enquiries within 48 hours.' },
-            { num: '02', title: 'Authentication', desc: 'We meet at one of our consignor events or by appointment. Each piece is personally authenticated by Smitha Murthy.' },
+            { num: '02', title: 'Authentication', desc: 'We meet at one of our consignor events or by appointment. Each piece is personally authenticated by our founder.' },
             { num: '03', title: 'Listing', desc: 'Accepted pieces are photographed, described, and listed on Ancestral Closet with your approval before going live.' },
             { num: '04', title: 'Sale & Payment', desc: 'When your piece sells, you receive your share of the sale price within 14 days of confirmed payment.' },
           ].map(step => (
