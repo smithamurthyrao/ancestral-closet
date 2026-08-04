@@ -43,20 +43,20 @@ export default function Consign() {
         </p>
       </section>
 
-      {/* HOW IT WORKS */}
+      {/* HOW IT WORKS — light section, dark text */}
       <section style={{ background: '#FAF7F2', padding: 'clamp(40px,6vw,64px) clamp(16px,5vw,40px)', width: '100%', boxSizing: 'border-box' as const }}>
-        <p style={{ fontFamily: "'Cinzel',serif", fontSize: '10px', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9973A', marginBottom: '32px' }}>
+        <p style={{ fontFamily: "'Cinzel',serif", fontSize: '10px', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#1a1410', marginBottom: '32px' }}>
           THE CONSIGNMENT PROCESS
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1px', background: 'rgba(201,151,58,0.15)' }}>
           {[
             { num: '01', title: 'Reach Out', desc: 'Fill in the form below with details about your piece. We respond to all enquiries within 48 hours.' },
-            { num: '02', title: 'Authentication', desc: 'We meet at one of our consignor events or by appointment. Each piece is personally authenticated against our curation standards by Smitha Murthy.' },
+            { num: '02', title: 'Authentication', desc: 'We meet at one of our consignor events or by appointment. Each piece is personally authenticated by Smitha Murthy.' },
             { num: '03', title: 'Listing', desc: 'Accepted pieces are photographed, described, and listed on Ancestral Closet with your approval before going live.' },
-            { num: '04', title: 'Sale & Payment', desc: 'When your piece sells, you receive 70% of the sale price within 14 days of confirmed payment.' },
+            { num: '04', title: 'Sale & Payment', desc: 'When your piece sells, you receive your share of the sale price within 14 days of confirmed payment.' },
           ].map(step => (
             <div key={step.num} style={{ background: '#FAF7F2', padding: 'clamp(28px,4vw,40px) clamp(20px,3vw,32px)' }}>
-              <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '48px', fontWeight: 300, color: '#C9973A', opacity: 0.2, lineHeight: 1, marginBottom: '16px' }}>{step.num}</div>
+              <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '48px', fontWeight: 300, color: '#1a1410', opacity: 0.15, lineHeight: 1, marginBottom: '16px' }}>{step.num}</div>
               <h3 style={{ fontFamily: "'Cinzel',serif", fontSize: '11px', letterSpacing: '0.2em', color: '#1a1410', marginBottom: '12px' }}>{step.title}</h3>
               <p style={{ fontSize: '13px', color: '#6B5C50', lineHeight: 1.8 }}>{step.desc}</p>
             </div>
@@ -64,7 +64,7 @@ export default function Consign() {
         </div>
       </section>
 
-      {/* OUR STANDARD */}
+      {/* OUR STANDARD — dark section */}
       <section style={{ background: '#1a1410', padding: 'clamp(40px,6vw,64px) clamp(16px,5vw,40px)', width: '100%', boxSizing: 'border-box' as const }}>
         <p style={{ fontFamily: "'Cinzel',serif", fontSize: '10px', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9973A', marginBottom: '12px' }}>
           OUR STANDARD
@@ -126,21 +126,33 @@ export default function Consign() {
             </div>
           </div>
 
-          {/* Commission */}
+          {/* Commission — reframed */}
           <div>
             <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(18px,2.5vw,22px)', fontWeight: 300, color: '#F5E6C8', marginBottom: '20px' }}>
-              Commission
+              Our Commitment to You
             </h3>
-            <div style={{ background: 'rgba(201,151,58,0.08)', border: '0.5px solid rgba(201,151,58,0.25)', padding: '28px', marginBottom: '16px', textAlign: 'center' }}>
-              <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '64px', color: '#C9973A', lineHeight: 1 }}>70%</div>
-              <div style={{ fontSize: '13px', color: '#F5E6C8', marginTop: '8px', letterSpacing: '0.1em' }}>TO YOU</div>
-              <div style={{ fontSize: '12px', color: '#6B6560', marginTop: '12px', lineHeight: 1.7 }}>Paid within 14 days of confirmed sale.</div>
-            </div>
-            <p style={{ fontSize: '12px', color: '#6B6560', lineHeight: 1.7, fontStyle: 'italic' }}>
-              Ancestral Closet retains 30% to cover authentication, listing, photography, and platform costs.
+            <p style={{ fontSize: '14px', color: '#6B6560', lineHeight: 1.9, marginBottom: '24px', fontFamily: "'Cormorant Garamond',serif", fontStyle: 'italic' }}>
+              "We believe the woman who loved this saree first deserves to be honoured. Our consignment structure reflects that."
             </p>
-
-            <div style={{ marginTop: '24px', borderTop: '0.5px solid rgba(201,151,58,0.2)', paddingTop: '20px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '24px' }}>
+              {[
+                'Your piece is listed with its full story and authenticated provenance',
+                'You approve the listing before it goes live',
+                'You receive the greater share of every sale',
+                'Payment within 14 days of confirmed sale',
+                'If your piece does not sell, it is returned to you',
+              ].map(item => (
+                <div key={item} style={{ display: 'flex', gap: '12px', fontSize: '13px', color: '#6B6560', lineHeight: 1.7 }}>
+                  <span style={{ color: '#C9973A', flexShrink: 0 }}>—</span>{item}
+                </div>
+              ))}
+            </div>
+            <div style={{ borderTop: '0.5px solid rgba(201,151,58,0.2)', paddingTop: '20px' }}>
+              <p style={{ fontSize: '12px', color: '#8B7355', lineHeight: 1.7, fontStyle: 'italic' }}>
+                Commission details are discussed personally with each consignor and confirmed in your consignor agreement before listing.
+              </p>
+            </div>
+            <div style={{ marginTop: '20px', borderTop: '0.5px solid rgba(201,151,58,0.2)', paddingTop: '20px' }}>
               <h4 style={{ fontFamily: "'Cinzel',serif", fontSize: '10px', letterSpacing: '0.2em', color: '#C9973A', marginBottom: '12px' }}>DISCLOSURE STANDARD</h4>
               <p style={{ fontSize: '12px', color: '#6B6560', lineHeight: 1.7 }}>
                 Staining not visible to the naked eye — identified only on close inspection — does not result in automatic decline. It will be disclosed transparently in the listing so buyers know exactly what they're receiving.
@@ -153,7 +165,7 @@ export default function Consign() {
       {/* CONTACT FORM */}
       <section style={{ background: '#FAF7F2', padding: 'clamp(40px,6vw,64px) clamp(16px,5vw,40px)', width: '100%', boxSizing: 'border-box' as const }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-          <p style={{ fontFamily: "'Cinzel',serif", fontSize: '10px', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9973A', marginBottom: '12px' }}>
+          <p style={{ fontFamily: "'Cinzel',serif", fontSize: '10px', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#1a1410', marginBottom: '12px' }}>
             GET IN TOUCH
           </p>
           <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(24px,4vw,36px)', fontWeight: 300, color: '#1a1410', marginBottom: '8px' }}>
