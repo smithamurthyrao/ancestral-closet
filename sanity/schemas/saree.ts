@@ -12,6 +12,7 @@ export default defineType({
       { title: 'KSIC Mysore Silk Crepe', value: 'mysore_crepe' },
       { title: 'KSIC Mysore Silk Georgette', value: 'mysore_georgette' },
       { title: 'Pochampally / Ikat Silk', value: 'pochampally' },
+      { title: 'Other', value: 'other' },
     ], layout: 'radio' }, validation: Rule => Rule.required() }),
     defineField({ name: 'origin', title: 'Origin / Region', type: 'string', validation: Rule => Rule.required() }),
     defineField({ name: 'listingType', title: 'Listing Type', type: 'string', options: { list: [
