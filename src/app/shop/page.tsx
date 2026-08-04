@@ -13,11 +13,16 @@ const client = projectId ? createClient({ projectId, dataset, apiVersion: '2024-
 const builder = client ? imageUrlBuilder(client) : null
 function urlFor(source: any) { return builder!.image(source) }
 
-const sareeTypes = ['All', 'Kanjivaram', 'Banarasi', 'Paithani', 'Chanderi', 'Mysore Silk', 'Pochampally', 'Other']
+const sareeTypes = ['All', 'Kanjivaram', 'Banarasi Pure Silk', 'Banarasi Georgette', 'Paithani', 'KSIC Mysore Silk Crepe', 'KSIC Mysore Silk Georgette', 'Pochampally / Ikat Silk']
 const typeValues: Record<string, string> = {
-  'All': 'all', 'Kanjivaram': 'kanjivaram', 'Banarasi': 'banarasi',
-  'Paithani': 'paithani', 'Chanderi': 'chanderi', 'Mysore Silk': 'mysore',
-  'Pochampally': 'pochampally', 'Other': 'other'
+  'All': 'all',
+  'Kanjivaram': 'kanjivaram',
+  'Banarasi Pure Silk': 'banarasi',
+  'Banarasi Georgette': 'banarasi_georgette',
+  'Paithani': 'paithani',
+  'KSIC Mysore Silk Crepe': 'mysore_crepe',
+  'KSIC Mysore Silk Georgette': 'mysore_georgette',
+  'Pochampally / Ikat Silk': 'pochampally',
 }
 
 const conditionLabel: Record<string, string> = {

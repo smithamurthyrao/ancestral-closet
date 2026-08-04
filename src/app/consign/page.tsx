@@ -85,7 +85,7 @@ export default function Consign() {
               {[
                 'Pure silk only — no blended fabrics, no synthetic zari, no power loom construction',
                 'Handwoven or handloom — machine-made pieces are not accepted regardless of price',
-                'GI-tagged weave types — Kanjivaram, Banarasi, Paithani, Chanderi, Mysore Silk, Pochampally',
+                'GI-tagged weave types only — Kanjivaram, Banarasi Pure Silk, Banarasi Georgette, Paithani, KSIC Mysore Silk Crepe, KSIC Mysore Silk Georgette, Pochampally / Ikat Silk',
                 'No visible damage — no staining, tears, snags, missing border sections, or heavy zari tarnishing',
                 'No repairs — however minor or invisible, previously repaired pieces are not accepted',
                 'Dry cleaned and pressed — every piece must arrive dry cleaned, ironed, and photography-ready',
