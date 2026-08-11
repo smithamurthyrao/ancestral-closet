@@ -86,8 +86,8 @@ export default function SareeDetail() {
     if (!client || !params.slug) return
     client.fetch(`*[_type == "saree" && slug.current == $slug][0] {
       _id, name, slug, type, origin, listingType, condition,
-      buyPrice, rentPrice, images, description, provenanceStory,
-      colors, featured
+      buyPrice, images, description, provenanceStory,
+      colors, featured, sold
     }`, { slug: params.slug }).then((data: any) => {
       setSaree(data)
       setLoading(false)
@@ -178,17 +178,16 @@ export default function SareeDetail() {
 
             {/* Pricing */}
             <div style={{ borderTop: '0.5px solid rgba(201,151,58,0.15)', borderBottom: '0.5px solid rgba(201,151,58,0.15)', padding: '16px 0' }}>
-              {saree.buyPrice && (
+              {saree.sold ? (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(20px,3vw,26px)', fontStyle: 'italic', color: '#C9973A' }}>Found Its Home</div>
+                  <div style={{ width: '32px', height: '0.5px', background: 'rgba(201,151,58,0.4)' }} />
+                </div>
+              ) : saree.buyPrice ? (
                 <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(22px,3vw,28px)', color: '#C9973A' }}>
                   ${saree.buyPrice.toLocaleString()}
                 </div>
-              )}
-              {saree.rentPrice && (
-                <div style={{ fontSize: '13px', color: '#8B7355', marginTop: '4px' }}>
-                  Rent from ${saree.rentPrice} / 3 days
-                </div>
-              )}
-              {!saree.buyPrice && !saree.rentPrice && (
+              ) : (
                 <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '18px', fontStyle: 'italic', color: '#8B7355' }}>Pricing on request</div>
               )}
             </div>
@@ -209,15 +208,23 @@ export default function SareeDetail() {
               </div>
             )}
 
-            {/* Enquire button */}
-            <button onClick={() => setEnquiryOpen(true)}
-              style={{ background: '#C9973A', color: '#1a1410', border: 'none', padding: '16px', fontSize: '12px', letterSpacing: '0.18em', textTransform: 'uppercase', cursor: 'pointer', marginTop: '8px' }}>
-              Enquire About This Piece
-            </button>
-
-            <p style={{ fontSize: '12px', color: '#8B7355', lineHeight: 1.7, fontStyle: 'italic' }}>
-              Every piece is personally authenticated by our founder. We respond to all enquiries within 48 hours.
-            </p>
+            {/* Enquire button — hidden when sold */}
+            {saree.sold ? (
+              <div style={{ background: 'rgba(201,151,58,0.06)', border: '0.5px solid rgba(201,151,58,0.25)', padding: '20px', textAlign: 'center', marginTop: '8px' }}>
+                <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '16px', fontStyle: 'italic', color: '#C9973A', marginBottom: '8px' }}>This piece has found its new home. ✦</p>
+                <p style={{ fontSize: '13px', color: '#8B7355', lineHeight: 1.7 }}>Browse our collection for other authenticated pieces, or <a href="/consign" style={{ color: '#C9973A' }}>consign your own</a>.</p>
+              </div>
+            ) : (
+              <>
+                <button onClick={() => setEnquiryOpen(true)}
+                  style={{ background: '#C9973A', color: '#1a1410', border: 'none', padding: '16px', fontSize: '12px', letterSpacing: '0.18em', textTransform: 'uppercase', cursor: 'pointer', marginTop: '8px' }}>
+                  Enquire About This Piece
+                </button>
+                <p style={{ fontSize: '12px', color: '#8B7355', lineHeight: 1.7, fontStyle: 'italic' }}>
+                  Every piece is personally authenticated by our founder. We respond to all enquiries within 48 hours.
+                </p>
+              </>
+            )}
           </div>
         </div>
       </div>

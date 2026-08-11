@@ -31,7 +31,14 @@ export default defineType({
     defineField({ name: 'colors', title: 'Primary Colors', type: 'array', of: [{ type: 'string' }], options: { layout: 'tags' } }),
     defineField({ name: 'featured', title: 'Featured Piece', type: 'boolean', initialValue: false }),
     defineField({ name: 'available', title: 'Available', type: 'boolean', initialValue: true }),
+    defineField({ name: 'sold', title: 'Sold — Found Its Home', type: 'boolean', initialValue: false,
+      description: 'Toggle on when this piece has sold. It will remain visible on the site with a "Found Its Home" label.' }),
     defineField({ name: 'order', title: 'Display Order', type: 'number' }),
   ],
-  preview: { select: { title: 'name', subtitle: 'origin', media: 'images.0' } },
+  preview: {
+    select: { title: 'name', subtitle: 'origin', media: 'images.0' },
+    prepare({ title, subtitle, media }: any) {
+      return { title, subtitle, media }
+    }
+  },
 })
