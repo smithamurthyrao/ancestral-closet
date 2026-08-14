@@ -13,12 +13,11 @@ const client = projectId ? createClient({ projectId, dataset, apiVersion: '2024-
 const builder = client ? imageUrlBuilder(client) : null
 function urlFor(source: any) { return builder!.image(source) }
 
-const sareeTypes = ['All', 'Kanjivaram', 'Banarasi Pure Silk', 'Banarasi Georgette', 'Paithani', 'KSIC Mysore Silk Crepe', 'KSIC Mysore Silk Georgette', 'Pochampally / Ikat Silk', 'Other']
+const sareeTypes = ['All', 'Kanjivaram', 'Banarasi', 'Paithani', 'Mysore Silk', 'Pochampally / Ikat', 'Uppada Silk', 'Sambalpuri Ikat', 'Patola', 'Other']
 const typeValues: Record<string, string> = {
-  'All': 'all', 'Kanjivaram': 'kanjivaram', 'Banarasi Pure Silk': 'banarasi',
-  'Banarasi Georgette': 'banarasi_georgette', 'Paithani': 'paithani',
-  'KSIC Mysore Silk Crepe': 'mysore_crepe', 'KSIC Mysore Silk Georgette': 'mysore_georgette',
-  'Pochampally / Ikat Silk': 'pochampally', 'Other': 'other',
+  'All': 'all', 'Kanjivaram': 'kanjivaram', 'Banarasi': 'banarasi',
+  'Paithani': 'paithani', 'Mysore Silk': 'mysore', 'Pochampally / Ikat': 'pochampally',
+  'Uppada Silk': 'uppada', 'Sambalpuri Ikat': 'sambalpuri', 'Patola': 'patola', 'Other': 'other',
 }
 const conditionLabel: Record<string, string> = {
   heirloom: 'Heirloom', excellent: 'Excellent', good: 'Good', fair: 'Fair'
@@ -31,24 +30,18 @@ function SareeCard({ saree }: { saree: any }) {
   const sold = saree.sold === true
 
   return (
-    <div
-      style={{ background: '#fff', display: 'flex', flexDirection: 'column', cursor: 'pointer', opacity: sold ? 0.7 : 1, position: 'relative' }}
-      onClick={() => router.push(`/shop/${saree.slug?.current}`)}
-    >
-      {/* Image */}
+    <div style={{ background: '#fff', display: 'flex', flexDirection: 'column', cursor: 'pointer', opacity: sold ? 0.7 : 1, position: 'relative' }}
+      onClick={() => router.push(`/shop/${saree.slug?.current}`)}>
       <div style={{ aspectRatio: '4/3', position: 'relative', background: '#EDE0D0', overflow: 'hidden' }}>
         {images.length > 1 && !sold && (
           <span style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 2, fontSize: '11px', background: 'rgba(26,20,16,0.7)', color: '#F5E6C8', padding: '4px 10px' }}>
             {images.length} photos
           </span>
         )}
-        {/* Sold overlay */}
         {sold && (
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(26,20,16,0.45)', zIndex: 3, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <div style={{ textAlign: 'center', padding: '16px 24px', border: '0.5px solid rgba(201,151,58,0.6)', background: 'rgba(26,20,16,0.75)' }}>
-              <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '20px', fontStyle: 'italic', color: '#C9973A', letterSpacing: '0.05em' }}>
-                Found Its Home
-              </div>
+              <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '20px', fontStyle: 'italic', color: '#C9973A' }}>Found Its Home</div>
               <div style={{ width: '32px', height: '0.5px', background: 'rgba(201,151,58,0.5)', margin: '8px auto 0' }} />
             </div>
           </div>
@@ -57,8 +50,6 @@ function SareeCard({ saree }: { saree: any }) {
           <Image src={urlFor(coverImage).width(600).height(450).fit('crop').url()} alt={coverImage.alt || saree.name} fill style={{ objectFit: 'cover', filter: sold ? 'grayscale(30%)' : 'none' }} />
         )}
       </div>
-
-      {/* Info */}
       <div style={{ padding: 'clamp(14px,2vw,18px) clamp(14px,2.5vw,20px)', flex: 1, display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(17px,2.5vw,20px)', color: sold ? '#8B7355' : '#1a1410', lineHeight: 1.2 }}>{saree.name}</div>
         <div style={{ fontSize: '12px', color: '#8B7355', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{saree.origin}</div>
@@ -116,7 +107,6 @@ export default function Shop() {
     if (typeFilter !== 'all') result = result.filter(s => s.type === typeFilter)
     if (sortOrder === 'price-asc') result.sort((a, b) => (a.buyPrice || 0) - (b.buyPrice || 0))
     if (sortOrder === 'price-desc') result.sort((a, b) => (b.buyPrice || 0) - (a.buyPrice || 0))
-    // Always keep sold items at the bottom
     result.sort((a, b) => (a.sold ? 1 : 0) - (b.sold ? 1 : 0))
     setFiltered(result)
   }, [typeFilter, sortOrder, sarees])
@@ -142,7 +132,6 @@ export default function Shop() {
           {loading ? 'Loading...' : `${availableCount} piece${availableCount !== 1 ? 's' : ''} available`}
         </p>
       </div>
-
       <div style={{ background: '#FAF7F2', padding: 'clamp(14px,2vw,18px) clamp(16px,5vw,40px)', borderBottom: '0.5px solid rgba(201,151,58,0.15)', display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center', width: '100%', boxSizing: 'border-box' as const }}>
         <span style={{ fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#6B5C50', marginRight: '4px' }}>Type</span>
         {sareeTypes.map(t => (
@@ -156,7 +145,6 @@ export default function Shop() {
           <option value="price-desc">Price: High to Low</option>
         </select>
       </div>
-
       {loading ? (
         <div style={{ padding: '80px', textAlign: 'center', fontFamily: "'Cormorant Garamond',serif", fontSize: '22px', fontStyle: 'italic', color: '#8B7355' }}>Loading the collection...</div>
       ) : filtered.length === 0 ? (

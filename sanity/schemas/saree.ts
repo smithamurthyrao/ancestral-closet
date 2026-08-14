@@ -6,12 +6,13 @@ export default defineType({
     defineField({ name: 'slug', title: 'Slug', type: 'slug', options: { source: 'name', maxLength: 96 }, validation: Rule => Rule.required() }),
     defineField({ name: 'type', title: 'Saree Type', type: 'string', options: { list: [
       { title: 'Kanjivaram', value: 'kanjivaram' },
-      { title: 'Banarasi Pure Silk', value: 'banarasi' },
-      { title: 'Banarasi Georgette', value: 'banarasi_georgette' },
+      { title: 'Banarasi', value: 'banarasi' },
       { title: 'Paithani', value: 'paithani' },
-      { title: 'KSIC Mysore Silk Crepe', value: 'mysore_crepe' },
-      { title: 'KSIC Mysore Silk Georgette', value: 'mysore_georgette' },
+      { title: 'Mysore Silk', value: 'mysore' },
       { title: 'Pochampally / Ikat Silk', value: 'pochampally' },
+      { title: 'Uppada Silk', value: 'uppada' },
+      { title: 'Sambalpuri Ikat', value: 'sambalpuri' },
+      { title: 'Patola', value: 'patola' },
       { title: 'Other', value: 'other' },
     ], layout: 'radio' }, validation: Rule => Rule.required() }),
     defineField({ name: 'origin', title: 'Origin / Region', type: 'string', validation: Rule => Rule.required() }),
@@ -35,10 +36,5 @@ export default defineType({
       description: 'Toggle on when this piece has sold. It will remain visible on the site with a "Found Its Home" label.' }),
     defineField({ name: 'order', title: 'Display Order', type: 'number' }),
   ],
-  preview: {
-    select: { title: 'name', subtitle: 'origin', media: 'images.0' },
-    prepare({ title, subtitle, media }: any) {
-      return { title, subtitle, media }
-    }
-  },
+  preview: { select: { title: 'name', subtitle: 'origin', media: 'images.0' } },
 })

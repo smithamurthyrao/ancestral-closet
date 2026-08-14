@@ -51,7 +51,7 @@ export default function Consign() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1px', background: 'rgba(201,151,58,0.2)' }}>
           {[
             { num: '01', title: 'Reach Out', desc: 'Fill in the form below with details about your piece. We respond to all enquiries within 48 hours.' },
-            { num: '02', title: 'Authentication', desc: 'We meet at one of our consignor events or by appointment. Each piece is personally authenticated by our founder.' },
+            { num: '02', title: 'Authentication', desc: 'We meet at one of our consignor events or by appointment. Each piece is personally authenticated by Smitha Murthy.' },
             { num: '03', title: 'Listing', desc: 'Accepted pieces are photographed, described, and listed on Ancestral Closet with your approval before going live.' },
             { num: '04', title: 'Sale & Payment', desc: 'When your piece sells, you receive your share of the sale price within 14 days of confirmed payment.' },
           ].map(step => (
@@ -85,7 +85,7 @@ export default function Consign() {
               {[
                 'Pure silk only — no blended fabrics, no synthetic zari, no power loom construction',
                 'Handwoven or handloom — machine-made pieces are not accepted regardless of price',
-                'GI-tagged weave types only — Kanjivaram, Banarasi Pure Silk, Banarasi Georgette, Paithani, KSIC Mysore Silk Crepe, KSIC Mysore Silk Georgette, Pochampally / Ikat Silk',
+                'GI-tagged weave types only — Kanjivaram, Banarasi, Paithani, Mysore Silk, Pochampally / Ikat Silk, Uppada Silk, Sambalpuri Ikat, Patola',
                 'No visible damage — no staining, tears, snags, missing border sections, or heavy zari tarnishing',
                 'No repairs — however minor or invisible, previously repaired pieces are not accepted',
                 'Dry cleaned and pressed — every piece must arrive dry cleaned, ironed, and photography-ready',
@@ -135,7 +135,7 @@ export default function Consign() {
                 'You approve the listing before it goes live',
                 'You receive the greater share of every sale',
                 'Payment within 14 days of confirmed sale',
-                'If your piece does not sell, it is returned to you',
+
               ].map(item => (
                 <div key={item} style={{ display: 'flex', gap: '14px', fontSize: '15px', color: '#C8B89A', lineHeight: 1.75 }}>
                   <span style={{ color: '#C9973A', flexShrink: 0 }}>—</span>{item}
