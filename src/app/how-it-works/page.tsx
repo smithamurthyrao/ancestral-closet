@@ -11,7 +11,7 @@ const tracks = [
       'Condition grading: Heirloom, Excellent, Good, Fair',
       'Secure purchase, shipped directly from the owner, tracked and insured.',
       "7-day return if a piece isn't as described.",
-      'Certificate of authenticity included',
+      'Authentication and condition details disclosed on every listing',
     ],
     cta: 'Browse Collection', href: '/shop',
     link: { label: 'Returns & Disputes policy', href: '/returns' },
