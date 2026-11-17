@@ -10,6 +10,11 @@ export default function Footer() {
           <p style={{ fontSize: '13px', color: '#6B6560', lineHeight: 1.6 }}>Curated · Authenticated · Cherished</p>
         </div>
 
+        {/* Policy */}
+        <Link href="/returns" style={{ fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(245,230,200,0.55)' }}>
+          Returns &amp; Disputes
+        </Link>
+
         {/* Social */}
         <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
           <a href="https://www.instagram.com/ancestralcloset" target="_blank" rel="noopener noreferrer"

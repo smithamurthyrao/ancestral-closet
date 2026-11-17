@@ -223,6 +223,9 @@ export default function SareeDetail() {
                 <p style={{ fontSize: '12px', color: '#8B7355', lineHeight: 1.7, fontStyle: 'italic' }}>
                   Every piece is personally authenticated by our founder. We respond to all enquiries within 48 hours.
                 </p>
+                <p style={{ fontSize: '13px', color: '#8B7355', lineHeight: 1.7 }}>
+                  Returns: 7 days from delivery if not as described. <a href="/returns" style={{ color: '#C9973A', borderBottom: '0.5px solid rgba(201,151,58,0.5)' }}>See policy</a>
+                </p>
               </>
             )}
           </div>

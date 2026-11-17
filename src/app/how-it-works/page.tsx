@@ -9,9 +9,12 @@ const tracks = [
       'Browse our authenticated collection',
       "Read each saree's full description and provenance story",
       'Condition grading: Heirloom, Excellent, Good, Fair',
-      'Secure purchase with white-glove delivery',
+      'Secure purchase, shipped directly from the owner, tracked and insured.',
+      "7-day return if a piece isn't as described.",
+      'Certificate of authenticity included',
     ],
     cta: 'Browse Collection', href: '/shop',
+    link: { label: 'Returns & Disputes policy', href: '/returns' },
   },
   {
     num: '02', name: 'Consign',
@@ -19,7 +22,8 @@ const tracks = [
       'Reach out with details about your piece',
       'We authenticate personally at a consignor event or by appointment',
       'Accepted pieces are listed with full description and photos',
-      'You receive your share of the sale price within 14 days of confirmed sale',
+      'You receive your share of the sale price within 14 days after the 7-day return window closes.',
+      'If your piece does not sell, it is returned to you',
     ],
     cta: 'Start Consigning', href: '/consign',
   },
@@ -53,6 +57,15 @@ export default function HowItWorks() {
                 {track.cta} →
               </span>
             </Link>
+            {'link' in track && track.link && (
+              <div>
+                <Link href={track.link.href}>
+                  <span style={{ display: 'inline-block', marginTop: '16px', fontSize: '12px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#9B8C80', borderBottom: '0.5px solid rgba(155,140,128,0.5)', paddingBottom: '3px' }}>
+                    {track.link.label} →
+                  </span>
+                </Link>
+              </div>
+            )}
           </div>
         ))}
       </div>

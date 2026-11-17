@@ -53,7 +53,7 @@ export default function Consign() {
             { num: '01', title: 'Reach Out', desc: 'Fill in the form below with details about your piece. We respond to all enquiries within 48 hours.' },
             { num: '02', title: 'Authentication', desc: 'We meet at one of our consignor events or by appointment. Each piece is personally authenticated by Smitha Murthy.' },
             { num: '03', title: 'Listing', desc: 'Accepted pieces are photographed, described, and listed on Ancestral Closet with your approval before going live.' },
-            { num: '04', title: 'Sale & Payment', desc: 'When your piece sells, you receive your share of the sale price within 14 days of confirmed payment.' },
+            { num: '04', title: 'Sale & Payment', desc: 'When your piece sells, you receive your share of the sale price within 14 days after the 7-day return window closes.' },
           ].map(step => (
             <div key={step.num} style={{ background: '#FAF7F2', padding: 'clamp(28px,4vw,40px) clamp(20px,3vw,32px)' }}>
               <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '52px', fontWeight: 300, color: '#1a1410', opacity: 0.12, lineHeight: 1, marginBottom: '16px' }}>{step.num}</div>
@@ -70,7 +70,7 @@ export default function Consign() {
           OUR STANDARD
         </p>
         <p style={{ fontSize: 'clamp(16px,2vw,18px)', color: '#D4C4B0', maxWidth: '680px', lineHeight: 1.85, marginBottom: '52px', fontFamily: "'Cormorant Garamond',serif", fontStyle: 'italic' }}>
-          Ancestral Closet accepts only pieces that meet our full quality threshold. Our promise to every buyer is absolute: what they receive is exactly as described, personally verified, and worthy of the Ancestral Closet name.
+          Ancestral Closet accepts only pieces that meet our full quality threshold. Our promise to every buyer: what you receive is as described, personally verified, and worthy of the Ancestral Closet name. If it isn't, you can return it within 7 days of delivery.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(40px,5vw,60px)' }}>
@@ -85,7 +85,7 @@ export default function Consign() {
               {[
                 'Pure silk only — no blended fabrics, no synthetic zari, no power loom construction',
                 'Handwoven or handloom — machine-made pieces are not accepted regardless of price',
-                'GI-tagged weave types only — Kanjivaram, Banarasi, Paithani, Mysore Silk, Pochampally / Ikat Silk, Uppada Silk, Sambalpuri Ikat, Patola',
+                'GI-tagged weave types — Kanjivaram, Banarasi, Paithani, Chanderi, Mysore Silk, Pochampally',
                 'No visible damage — no staining, tears, snags, missing border sections, or heavy zari tarnishing',
                 'No repairs — however minor or invisible, previously repaired pieces are not accepted',
                 'Dry cleaned and pressed — every piece must arrive dry cleaned, ironed, and photography-ready',
@@ -134,8 +134,8 @@ export default function Consign() {
                 'Your piece is listed with its full story and authenticated provenance',
                 'You approve the listing before it goes live',
                 'You receive the greater share of every sale',
-                'Payment within 14 days of confirmed sale',
-
+                'Payment within 14 days after the 7-day return window closes',
+                'If your piece does not sell, it is returned to you',
               ].map(item => (
                 <div key={item} style={{ display: 'flex', gap: '14px', fontSize: '15px', color: '#C8B89A', lineHeight: 1.75 }}>
                   <span style={{ color: '#C9973A', flexShrink: 0 }}>—</span>{item}
